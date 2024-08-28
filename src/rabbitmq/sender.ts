@@ -25,16 +25,16 @@ export default function connectRabbitMQ (message:orderQueueMsgTypes, bindingKey:
             });
     
             // notification queue
-            queue = bindingKeys.NOTIFY_MESSAGES
-            channel.assertQueue(queue, {
-                durable: true
-            });
-            channel.sendToQueue(queue, Buffer.from(JSON.stringify(notificationMsg)), {
-                persistent: true
-            });
+            // queue = bindingKeys.NOTIFY_MESSAGES
+            // channel.assertQueue(queue, {
+            //     durable: true
+            // });
+            // channel.sendToQueue(queue, Buffer.from(JSON.stringify(notificationMsg)), {
+            //     persistent: true
+            // });
     
             console.log(" [x] Sent %s", msg);
-            console.log(" [x] Sent %s", notificationMsg);
+            // console.log(" [x] Sent %s", notificationMsg);
         });
         setTimeout(function() {
             connection.close();
