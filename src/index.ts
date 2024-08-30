@@ -6,6 +6,7 @@ import connectDB from './utils/connectDB'
 import { response } from './common/responses'
 import router from './routes/ordersRoutes'
 import { urls } from './utils/enums'
+import { connectToLocalRedis } from './redis/connectToLocalRedis'
 
 const app = express()
 
@@ -22,9 +23,11 @@ app.get('/', (req:Request, res:Response)=>{
 
 app.listen(ENV.PORT, async()=>{
     try {
+        console.log(messages.SERVER_RUNNING)
         await connectDB()
-        console.log(`Server is running on http://localhost:${ENV.PORT}/`)
         console.log(messages.DB_CONNECTED)
+        await connectToLocalRedis()
+        console.log(messages.REDIS_CONNECTED)
     } catch (error) {
         console.log('Error Listen: ', error)
     }

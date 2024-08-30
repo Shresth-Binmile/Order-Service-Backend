@@ -36,9 +36,9 @@ export default function connectRabbitMQ (message:orderQueueMsgTypes, bindingKey:
             console.log(" [x] Sent %s", msg);
             // console.log(" [x] Sent %s", notificationMsg);
         });
-        setTimeout(function() {
-            connection.close();
-            process.exit(0);
-        }, 500);
+        // setTimeout(function() {
+        //     connection.close();
+        //     process.exit(0);
+        // }, 500);
     });
 }
